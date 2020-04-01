@@ -17,7 +17,7 @@ module.exports = {
     },
 
     formatDate(date) {
-        return new Intl.DateTimeFormat('vi-VN').format(date);
+        return new Intl.DateTimeFormat("vi-VN").format(date);
     },
 
     async promptMessage(message, author, time, validReactions) {
