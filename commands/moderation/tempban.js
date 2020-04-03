@@ -3,6 +3,7 @@ const { stripIndents } = require('common-tags');
 const { promptMessage } = require('../../function.js');
 const color = require('../../colors.json');
 const ms = require('ms');
+const { getMember } = require('../../function.js');
 
 module.exports = {
     name: 'tempban',
@@ -14,6 +15,8 @@ module.exports = {
         if (message.deletable) {
             message.delete();
         }
+
+        const member = getMember(message, args.join(" "));
 
         if (!args[0]) {
             return message.reply("❌ Please tag an user!")
@@ -87,10 +90,13 @@ module.exports = {
             const emoji = await promptMessage(msg, message.author, 10, ["✔", "❌"]);
             if (emoji === "✔") {
                 await userBan.ban(args.slice(2).join(" "));
+                await member.send(`You have been banned temporary on **${message.guild.name}** because of ${args.slice(1).join(" ")}. Ban expires in: ${args[1]}`);
                 setTimeout(function(){
                     message.guild.members.unban(usertBan.id);
                     message.channel.send(`<@${usertBan.id}> has been unbanned automatically!`)
+                    member.send(`You have been unbanned on **${message.guild.name}**`);
                 }, ms(args[1]));
+
                 return message.channel.send(bEmbed);
             } else if (emoji === "❌") {
                 return  message.reply("Ban cancelled")

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { promptMessage } = require('../../function.js');
 const color = require('../../colors.json');
+const { getMember } = require('../../function.js');
 
 module.exports = {
     name: 'kick',
@@ -13,6 +14,8 @@ module.exports = {
         if (message.deletable) {
             message.delete();
         }
+
+        const member = getMember(message, args.join(" "));
 
         if (!args[0]) {
             return message.reply("❌ Please tag an user!")
@@ -81,6 +84,7 @@ module.exports = {
             const emoji = await promptMessage(msg, message.author, 10, ["✔", "❌"]);
             if (emoji === "✔") {
                 await userKick.kick(args.slice(1).join(" "));
+                await member.send(`You have been kicked on **${message.guild.name}** because of ${args.slice(1).join(" ")}`);
                 return message.channel.send(kEmbed);
             } else if (emoji === "❌") {
                 return message.reply("Kick cancelled")
