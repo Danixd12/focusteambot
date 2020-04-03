@@ -3,7 +3,6 @@ const color = require('../../colors.json');
 const { promptMessage } = require("../../function");
 const { stripIndents } = require("common-tags");
 const ms = require('ms');
-const { getMember } = require('../../function.js');
 
 module.exports = {
     name: 'tempmute',
@@ -15,7 +14,6 @@ module.exports = {
             message.delete();
         }
 
-        const member = getMember(message, args.join(" "));
         if (!args[0]) {
             return message.reply("❌ Please provide an user to mute!")
                 .then(m => m.delete({timeout: 5000}));
@@ -102,10 +100,8 @@ module.exports = {
             let muteTime = args[1];
             if (emoji === "✔") {
                 await userMute.roles.add(muteRole, "Muted");
-                await member.send(`You have been muted temporary on **${message.guild.name}** because of ${args.slice(1).join(" ")}. Mute expires in: ${args[1]}`);
                 setTimeout(function () {
                     userMute.roles.remove(muteRole, "Unmuted");
-                    member.send(`You have been unmuted on **${message.guild.name}**`);
                     message.channel.send(`<@${userMute.id}> has been unmuted automatically!`)
                 }, ms(muteTime));
                 return message.channel.send(mEmbed);

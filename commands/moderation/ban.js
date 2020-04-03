@@ -84,7 +84,6 @@ module.exports = {
             const emoji = await promptMessage(msg, message.author, 10, ["✔", "❌"]);
             if (emoji === "✔") {
                 await userBan.ban(args.slice(1).join(" "));
-                await member.send(`You have been banned on **${message.guild.name}** because of ${args.slice(1).join(" ")}`);
                 return message.channel.send(bEmbed);
             } else if (emoji === "❌") {
                 return  message.reply("Ban cancelled")

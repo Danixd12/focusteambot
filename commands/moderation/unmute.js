@@ -1,5 +1,3 @@
-const { getMember } = require('../../function.js');
-
 module.exports = {
     name: 'unmute',
     description: 'Mutes a user',
@@ -9,7 +7,6 @@ module.exports = {
         if (message.deletable) {
             message.delete();
         }
-        const member = getMember(message, args.join(" "));
         if (!args[0]) {
             return message.reply("❌ Please provide an user to unmute!")
                 .then(m => m.delete({timeout: 5000}));

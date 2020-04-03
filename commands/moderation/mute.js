@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const color = require('../../colors.json');
 const { promptMessage } = require("../../function");
 const { stripIndents } = require("common-tags");
-const { getMember } = require('../../function.js');
 
 module.exports = {
     name: 'mute',
@@ -14,7 +13,6 @@ module.exports = {
             message.delete();
         }
 
-        const member = getMember(message, args.join(" "));
         if (!args[0]) {
             return message.reply("❌ Please provide an user to mute!")
             .then(m => m.delete({timeout: 5000}));
@@ -95,7 +93,6 @@ module.exports = {
             const emoji = await promptMessage(msg, message.author, 10,["❌", "✔"]);
             if (emoji === "✔") {
                 await (userMute.roles.add(muteRole, "Muted"));
-                await member.send(`You have been muted on **${message.guild.name}** because of ${args.slice(1).join(" ")}`);
                 return message.channel.send(mEmbed);
             }
             if (emoji === "❌") {
