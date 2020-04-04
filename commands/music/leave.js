@@ -4,7 +4,7 @@ module.exports = {
     aliases: ['l'],
     category: 'music',
     usage: '/leave',
-    execute: async function(message, args) {
+    execute: async function(message) {
         if (message.deletable) {
             message.delete();
         }
@@ -23,7 +23,7 @@ module.exports = {
             return message.reply("❌ You aren't connected to the same voice channel!")
                 .then(m => m.delete({timeout: 5000}));
         }
-        await message.reply("Leaving channel...");
-        message.guild.me.voice.channel.leave();
+        await message.reply("✔ Leaving channel...");
+        return message.guild.me.voice.channel.leave();
     }
 };
