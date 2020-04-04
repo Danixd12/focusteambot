@@ -9,12 +9,25 @@ client.aliases = new Discord.Collection();
     require(`./handlers/${handler}`)(client);
 });
 
-client.once('ready', async () => {
+let statuses = [
+    'All members on the guild',
+    '/help',
+    'My prefix is /'
+];
+
+client.on('ready', async () => {
     await console.log("Signing in Discord");
     await console.log("Discord Sign in Successfully");
     await console.log("Preparing to receive commands");
     await console.log(`${client.user.username} is ready`);
-    await client.user.setActivity("All members in the server | /help", {type: "WATCHING"})
+    setInterval(function () {
+        let status = statuses[Math.floor(Math.random() * statuses.length)];
+        client.user.setPresence({
+            activity: {
+                name: status
+            }, status: "online"
+        });
+    }, 3000);
 });
 
 client.on('message', async message => {
