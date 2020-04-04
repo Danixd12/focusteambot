@@ -54,6 +54,9 @@ module.exports = {
         if (command.usage) {
             hEmbed.addField("Usage:", command.usage, true)
         }
+        if (command.description) {
+            hEmbed.addField("Description:", command.description, true)
+        }
         await message.channel.send(hEmbed);
     }
 };
