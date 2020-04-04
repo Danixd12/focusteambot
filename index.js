@@ -12,7 +12,7 @@ client.aliases = new Discord.Collection();
 client.once('ready', async () => {
     await console.log("Signing in Discord");
     await console.log("Discord Sign in Successfully");
-    await console.log("Preparing to recieve commands");
+    await console.log("Preparing to receive commands");
     await console.log(`${client.user.username} is ready`);
     await client.user.setActivity("All members in the server | /help", {type: "WATCHING"})
 });
