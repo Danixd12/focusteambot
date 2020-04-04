@@ -12,7 +12,7 @@ client.aliases = new Discord.Collection();
 let statuses = [
     'All members on the guild',
     '/help',
-    'My prefix is /'
+    "My prefix is "/""
 ];
 
 client.on('ready', async () => {
