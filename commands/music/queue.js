@@ -23,7 +23,6 @@ module.exports = {
             let resp = `Now playing: **${nowPlaying.songTitle}**. Requested by: **${nowPlaying.requester}**\n\n`;
 
             for (let i = 1; i < queue.length; i++) {
-                resp += `__**UP NEXT:**__\n`;
                 resp += `${i}) **${queue[i].songTitle}**. Requested by: **${queue[i].requester}**\n\n`;
             }
             await message.channel.send(resp);
