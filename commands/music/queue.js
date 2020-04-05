@@ -20,9 +20,10 @@ module.exports = {
             let queue = fetched.queue;
             let nowPlaying = queue[0];
 
-            let resp = `Now playing: **${nowPlaying.songTitle}**. Requested by: **${nowPlaying.requester}**\n\n__**Up Next:(if there any)**__\n`;
+            let resp = `Now playing: **${nowPlaying.songTitle}**. Requested by: **${nowPlaying.requester}**\n\n`;
 
             for (let i = 1; i < queue.length; i++) {
+                resp += `__**UP NEXT:**__`;
                 resp += `${i}) **${queue[i].songTitle}**. Requested by: **${queue[i].requester}**\n\n`;
             }
             await message.channel.send(resp);
@@ -31,7 +32,5 @@ module.exports = {
             await message.reply("✔ Queue cleared!");
             return fetched.dispatcher.emit('finish');
         }
-
-
     }
 };
