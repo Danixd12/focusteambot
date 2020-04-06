@@ -15,6 +15,7 @@ module.exports = {
         }
 
         commands.map(command => command.name).join(', ')
+        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!args.length) {
             let lEmbed = new Discord.MessageEmbed()
@@ -29,7 +30,6 @@ module.exports = {
             return message.channel.send(lEmbed);
         }
         const name = args[0].toLowerCase();
-        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!command) {
             return message.reply("❌ Command doesn't exist");
