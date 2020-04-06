@@ -24,7 +24,7 @@ module.exports = {
                 .setAuthor(`${message.guild.name}`, message.guild.iconURL())
                 .setTitle("Gay Rate Machine")
                 .setDescription(`${member.user.username} is ${gayIndex}% gay`)
-                .setFooter(`Requested by ${member.author.username}`, member.author.displayAvatarURL())
+                .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
                 .setTimestamp()
             return message.channel.send(gEmbed);
         }
