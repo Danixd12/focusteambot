@@ -32,7 +32,7 @@ module.exports = {
                 gEmbed.setDescription(`${tuan.user.username} is 100% gay`)
             }
             if (member === botUser) {
-                gEmbed.setDescription(`${bot.user.username} is 0% gay (Seriously?)`)
+                gEmbed.setDescription(`${botUser.user.username} is 0% gay (Seriously?)`)
             }
             return message.channel.send(gEmbed);
         }
