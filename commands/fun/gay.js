@@ -13,7 +13,7 @@ module.exports = {
         }
         const member = getMember(message, args.join(' '));
         const gay = Math.random() * 100;
-        const gayIndex = Math.floor(gay / 10);
+        const gayIndex = Math.floor(gay);
         if (args[0]) {
             if (!member) {
                 return message.reply("❌ Please tag an user!")
