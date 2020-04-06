@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const math = require('mathjs');
 const color = require('../../colors.json');
-const { stripIndents } = require('common-tags');
 
 module.exports = {
     name: 'math',

@@ -40,7 +40,7 @@ module.exports = {
                 **- Server Version:** ${res.version}
                 **- Player Online:** ${res.onlinePlayers}/${res.maxPlayers}
                 **- MOTD:** ${res.descriptionText}`, true)
-                .setFooter(`Requested by ${message.author.name}`, message.author.displayAvatarURL())
+                .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
                 .setTimestamp();
             message.channel.send(sEmbed);
 
