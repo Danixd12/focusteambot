@@ -14,6 +14,7 @@ module.exports = {
         const member = getMember(message, args.join(' '));
         const gay = Math.random() * 100;
         const gayIndex = Math.floor(gay);
+        const tuan = message.guild.members.cache.find(m => m.id === "490107873834303488");
         if (args[0]) {
             if (!member) {
                 return message.reply("❌ Please tag an user!")
@@ -26,6 +27,9 @@ module.exports = {
                 .setDescription(`${member.user.username} is ${gayIndex}% gay`)
                 .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
                 .setTimestamp()
+            if (member === tuan) {
+                gEmbed.setDescription(`${tuan.user.username} is 100% gay`)
+            }
             return message.channel.send(gEmbed);
         }
     }
