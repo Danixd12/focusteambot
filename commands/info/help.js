@@ -22,7 +22,7 @@ module.exports = {
                 .setColor(color.darkorange)
                 .setAuthor(`${message.guild.name}`, message.guild.iconURL())
                 .setTitle("Command List")
-                .setDescription(`Use ${prefix}help (command) to get details about it`)
+                .setDescription(`Use ${prefix}help (command) to get details about it\nRemember: if you typed a command and the bot didn't respond, that means you typed wrong usage of command and caused error`)
                 .addField("Commands",`${commands.map(command => command.name).join(', ')}`, true)
                 .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
                 .setTimestamp()
