@@ -27,8 +27,9 @@ module.exports = {
             .setThumbnail(output.url)
             .setDescription(stripIndents`
                 **- Element name (by IUPAC standard):** ${output.iupac}
-                **- Element Mass:** ${output.mass}
-                **- Element Symbol:** ${output.symbol}`)
+                **- Element Mass:** ${Math.round(output.mass)}g/mol
+                **- Element Symbol:** ${output.symbol}
+                **- Element origin:** ${output.origin}`)
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
             .setTimestamp()
         message.channel.send(cEmbed);
