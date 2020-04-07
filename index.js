@@ -31,6 +31,7 @@ client.on('ready', async () => {
 });
 
 client.on('message', async message => {
+    console.log(`[${message.guild.name}](${message.author.username}): ${message.content}`);
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
     if (!message.content.startsWith(prefix)) return;
