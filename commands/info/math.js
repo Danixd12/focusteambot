@@ -12,7 +12,7 @@ module.exports = {
             message.delete();
         }
 
-        let result = math.evaluate(`${args.slice(0).join(" ")}`);
+        let result = math.evaluate(`${args.slice(0).join(" ").replace(/x/,"*").replace(/:/, "/")}`);
 
         if (!args[0]) {
             return message.reply("❌ Please provide an expression to calculate!")

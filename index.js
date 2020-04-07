@@ -50,6 +50,7 @@ client.on('message', async message => {
     if (command){
         command.execute(message, args, ops);
     }
+
 });
 
 client.login(token);
