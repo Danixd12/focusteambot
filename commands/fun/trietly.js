@@ -11,10 +11,12 @@ module.exports = {
         }
 
         const member = getMember(message, args.join(" "));
-        if (!member) {
+        if (!args[0]) {
             return message.reply("❌ Please tag an user!")
                 .then(m => m.delete({timeout: 5000}));
+        } else {
+        	return message.channel.send(`${member} Không làm mà đòi có ăn thì chỉ có ăn đầu buồi ăn cứt`);
         }
-        return message.channel.send(`${member}! Không làm mà đòi có ăn thì chỉ có ăn đầu buồi ăn cứt`);
+       
     }
 };
