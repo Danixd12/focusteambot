@@ -12,7 +12,8 @@ module.exports = {
             message.delete();
         }
 
-        let result = math.evaluate(`${args.slice(0).join(" ").replace(/x/,"*").replace(/:/, "/")}`);
+        let input = args.slice(0).join(" ").replace(/x/,"*").replace(/:/, "/");
+        let output = math.evaluate(input);
 
         if (!args[0]) {
             return message.reply("❌ Please provide an expression to calculate!")
@@ -23,7 +24,7 @@ module.exports = {
                 .setAuthor(`${message.guild.name}`, message.guild.iconURL())
                 .setTitle("Expression result:")
                 .addField("Expression", args.slice(0).join(" "), true)
-                .addField("Result", result, true)
+                .addField("Result", output, true)
                 .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
                 .setTimestamp()
             return message.channel.send(mEmbed);
